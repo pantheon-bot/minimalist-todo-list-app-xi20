@@ -56,7 +56,7 @@ export async function PATCH(
       .where('id', '=', todoId)
       .executeTakeFirst();
 
-    if (result.numUpdatedRows === 0n) {
+    if (Number(result.numUpdatedRows) === 0) {
       return NextResponse.json(
         { error: 'Todo not found' },
         { status: 404 }
@@ -101,7 +101,7 @@ export async function DELETE(
       .where('id', '=', todoId)
       .executeTakeFirst();
 
-    if (result.numDeletedRows === 0n) {
+    if (Number(result.numDeletedRows) === 0) {
       return NextResponse.json(
         { error: 'Todo not found' },
         { status: 404 }
